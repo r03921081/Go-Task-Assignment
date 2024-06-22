@@ -1,0 +1,251 @@
+definitions:
+  dto.CreateTaskRequest:
+    properties:
+      name:
+        example: task name
+        type: string
+    type: object
+  dto.CreateUserRequest:
+    properties:
+      name:
+        example: user name
+        type: string
+      password:
+        example: password
+        type: string
+    type: object
+  dto.PutTaskRequest:
+    properties:
+      id:
+        example: 1
+        type: integer
+      name:
+        example: task name
+        type: string
+      status:
+        allOf:
+        - $ref: '#/definitions/model.TaskStatus'
+        example: 1
+    type: object
+  dto.Response:
+    properties:
+      code:
+        example: 0
+        type: integer
+      message:
+        example: success
+        type: string
+      result: {}
+    type: object
+  model.Task:
+    properties:
+      id:
+        example: 1
+        type: integer
+      name:
+        example: task name
+        type: string
+      status:
+        allOf:
+        - $ref: '#/definitions/model.TaskStatus'
+        example: 1
+    type: object
+  model.TaskStatus:
+    enum:
+    - 0
+    - 1
+    type: integer
+    x-enum-varnames:
+    - Incomplete
+    - Complete
+  model.User:
+    properties:
+      id:
+        example: 1
+        type: integer
+      password:
+        example: password
+        type: string
+      username:
+        example: user name
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /task:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Create task
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.Response'
+            - properties:
+                result:
+                  $ref: '#/definitions/model.Task'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.Response'
+      summary: Create a task
+      tags:
+      - task
+  /task/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Delete a task by id
+      tags:
+      - task
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Task ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update task
+        in: body
+        name: id
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutTaskRequest'
+      - description: Update task
+        in: body
+        name: name
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutTaskRequest'
+      - description: Update task
+        in: body
+        name: status
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PutTaskRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.Response'
+            - properties:
+                result:
+                  $ref: '#/definitions/model.Task'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.Response'
+      summary: Put a task by id
+      tags:
+      - task
+  /tasks:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.Response'
+            - properties:
+                result:
+                  items:
+                    $ref: '#/definitions/model.Task'
+                  type: array
+              type: object
+      summary: List tasks
+      tags:
+      - task
+  /users:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: create user
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.Response'
+            - properties:
+                result:
+                  $ref: '#/definitions/model.User'
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.Response'
+      summary: Create user
+      tags:
+      - user
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: create user
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/dto.CreateUserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+            - $ref: '#/definitions/dto.Response'
+            - properties:
+                result:
+                  type: string
+              type: object
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/dto.Response'
+      summary: Login
+      tags:
+      - user
+swagger: "2.0"
