@@ -106,8 +106,9 @@ curl --location --request DELETE 'localhost:8080/api/v1/task/3' \
 - **api**: Handles HTTP requests.
 - **module**: Defines interfaces and business logic for authentication, user management, and tasks.
 - **dataaccess**: Implements storage for authentication, user management, and tasks.
+  - The assignment requires storing data in memory.
   - Memory cache is chosen for in-memory storage.
-  - Using in-memory storage instead of a database makes it impossible to share data between autoscaling pods.
+  - Data stored in memory cannot be shared with other pods.
   - Interfaces are used to facilitate easy changes to different storage implementations.
-- **logging**: Utilizes Logrus for logging.
+- **log**: Utilizes Logrus for logging.
   - Each log entry includes a TraceID and UserID, which helps in tracing and debugging.
