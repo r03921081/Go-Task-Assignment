@@ -1,6 +1,6 @@
 module github.com/andyliao/task-homework
 
-go 1.21.11
+go 1.21
 
 require (
 	github.com/gin-gonic/gin v1.10.0
