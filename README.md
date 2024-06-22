@@ -105,6 +105,9 @@ curl --location --request DELETE 'localhost:8080/api/v1/task/3' \
 
 - **api**: Handles HTTP requests.
 - **module**: Defines interfaces and business logic for authentication, user management, and tasks.
+  - **Auth module**: Handles API key creation and validation for authentication.
+  - **User module**: Manages user creation and login.
+  - **Task module**: Manages CRUD operations for tasks.
 - **dataaccess**: Implements storage for authentication, user management, and tasks.
   - The assignment requires storing data in memory.
   - Memory cache is chosen for in-memory storage.
@@ -112,3 +115,4 @@ curl --location --request DELETE 'localhost:8080/api/v1/task/3' \
   - Interfaces are used to facilitate easy changes to different storage implementations.
 - **log**: Utilizes Logrus for logging.
   - Each log entry includes a TraceID and UserID, which helps in tracing and debugging.
+- **error**: Define error codes for easier debugging.
