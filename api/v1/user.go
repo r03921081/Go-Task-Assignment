@@ -34,7 +34,7 @@ func CreateUserV1Handler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, dto.NewResponse(c, model.User{
+	c.JSON(http.StatusCreated, dto.NewResponse(c, model.User{
 		Username: user.Username,
 	}))
 }

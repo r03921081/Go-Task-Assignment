@@ -81,8 +81,8 @@ curl --location 'localhost:8080/api/v1/task' \
 }'
 ```
 
-3. **Update Task**
-   - `PUT /tasks/:id`
+3. **Put Task**
+   - `PUT /task/:id`
 ```cURL
 curl --location --request PUT 'localhost:8080/api/v1/task/1' \
 --header 'H-API-KEY: afd66253-a36e-4034-988d-83b9e9d81f19' \
@@ -95,7 +95,7 @@ curl --location --request PUT 'localhost:8080/api/v1/task/1' \
 ```
 
 4. **Delete Task**
-   - `DELETE /tasks/:id`
+   - `DELETE /task/:id`
 ```cURL
 curl --location --request DELETE 'localhost:8080/api/v1/task/3' \
 --header 'H-API-KEY: afd66253-a36e-4034-988d-83b9e9d81f19'

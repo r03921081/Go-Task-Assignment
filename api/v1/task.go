@@ -48,7 +48,7 @@ func CreateTaskV1Handler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, dto.NewResponse(c, task))
+	c.JSON(http.StatusCreated, dto.NewResponse(c, task))
 }
 
 // PutTaskV1Handler godoc
