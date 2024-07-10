@@ -19,7 +19,7 @@ import (
 func main() {
 	router, err := apiserver.InitGinRouter(context.Background())
 	if err != nil {
-		panic("router init error:" + err.Error())
+		log.Fatal("router init error:" + err.Error())
 	}
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
