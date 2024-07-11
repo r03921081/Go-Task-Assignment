@@ -1,15 +1,15 @@
 # Go Task Server
 
-A server for managing CRUD tasks with an authorization mechanism, developed as a company's assignment.
+A server designed to manage CRUD operations with an integrated authorization mechanism, developed as part of a company assignment.
 
 ## Technologies Used
 
 - **Go** v1.21
-- **Gin** v1.10.0
-- **Swagger** v1.16.3
-- **Logrus** v1.9.3
-- **Testify** v1.9.0
-- **Go Cache** v2.1.0+incompatible
+- **gin** v1.10.0
+- **gin-swagger** v1.16.3
+- **logrus** v1.9.3
+- **testify** v1.9.0
+- **go-cache** v2.1.0+incompatible
 
 ## How to Run
 
@@ -114,5 +114,5 @@ curl --location --request DELETE 'localhost:8080/api/v1/task/3' \
   - Data stored in memory cannot be shared with other pods.
   - Interfaces are used to facilitate easy changes to different storage implementations.
 - **log**: Utilizes Logrus for logging.
-  - Each log entry includes a TraceID and UserID, which helps in tracing and debugging.
-- **error**: Define error codes for easier debugging.
+  - Each log entry includes a TraceID and UserID to aid in tracing and debugging.
+- **error**: Defines error codes to simplify debugging and integration.
