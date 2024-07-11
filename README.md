@@ -1,6 +1,6 @@
 # Go Task Server
 
-A server designed to manage CRUD operations with an integrated authorization mechanism, developed as part of a company assignment.
+This server is designed to manage CRUD operations with an integrated authorization mechanism, developed as part of an interview assignment for a company.
 
 ## Technologies Used
 
